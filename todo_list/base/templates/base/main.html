@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8">
+    <meta htt-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do Items</title>
+    <meta name="description" content="">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+             
+            font-family: 'Nunito', sans-serif;
+            padding-top: 50px;
+            /* background-image: url(https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlcyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D); */
+            /* background-color: transparent; */
+            background: linear-gradient(135deg, #153677, #4e085f);
+            background-repeat: no-repeat;
+            background-size: cover;  
+            background-position: center center;  
+            margin: 0;  
+            padding: 10px;
+            border-radius: 20px;
+            
+        }
+        
+        .outlined-element {
+            outline: 2px solid rgb(17, 1, 1);
+        }
+
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6
+           {
+            font-family : 'Raleway', sans-serif;
+        }
+
+        a,
+        p {
+            color: rgb(3, 2, 0);
+        }
+
+
+        .container{
+            max-width: 550px;
+            margin: auto;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);;
+        }
+        .todo-app{
+            width: 100%;
+            max-width: 540px;
+            background:#fcefff;
+            margin: 100px auto 20px;
+            padding: 40px 30px 70px;
+            border-radius: 10px 10px 10px 10px; 
+        }
+        ul li{
+            list-style: none;
+            font-size: 17px;
+            padding: 12px 8px 12px 50px;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+        }
+        ul li::before{
+            content:'';
+            position: absolute;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-image: url(To-Do-Img/unchecked.png);
+            background-size: cover;
+            background-position: center;
+            top: 12px;
+            left: 8px;
+
+
+        }
+        ul li.checked{
+            color: #555;
+            text-decoration: line-through;
+        }
+        ul li.checked::before{
+            background-image: url(To-Do-Img/checked.png);
+             
+        }
+
+
+        .header-bar {
+           display: flex; 
+           justify-content: space-between;
+           align-items: center;
+           color: #ffffff;
+           padding: 10px;
+           border-radius: 5px 5px 0 0 ; 
+           background: linear-gradient(90deg, #a169e0 0%, #661586 43%, #6c3e92 100%);
+        }
+
+        .header-bar a {
+            color: rgb(255, 255, 255);
+            align-items: center;
+            text-decoration: none;
+            background:#b19fc0;
+        }
+
+        .task-wrapper {
+           display: flex; 
+           align-items: center;
+           justify-content: space-between;
+           padding: 20px;
+           background-color: #fff;
+           border-top: 1px solid rgb(226,226,226);
+           background:#836c96;
+        }
+
+        .task-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .task-title a {
+            text-decoration: none;
+            align-items: center;
+            color: rgb(3, 3, 3);
+            margin-left: 10px;
+        }
+        
+        .task-complete-icon{
+             height: 20px;
+             width: 20px;
+             background-color: greenyellow;
+             text-decoration: line-through;
+             border-radius:50%;
+
+        }
+ 
+        .task-incomplete-icon{
+            height: 20px;
+             width: 20px;
+             background-color: gray;
+             text-decoration: line-through;
+             border-radius:50%;
+
+        }
+
+        .delete-link {
+            text-decoration: none;
+            align-items: center;
+            font-weight: 900;
+            color:rgb(255, 255, 255);
+            font-size: 22px;
+            line-height: 0;
+        }
+
+        
+        #search-add-wrapper {
+            display: flex;
+            align-items: center;
+            justify-items:space-between;
+            align-items: center;
+            padding: 10px;
+            background:#ad8cc7;
+        }
+
+        #add-link {
+            color:#050720;
+            text-decoration: none;
+            font-size:38px;
+            align-items: center;
+            margin-left: auto;
+            text-shadow:  1px 1px #81413b;
+
+        }
+        input[type=text],
+        input[type=password],
+        textarea{
+            border: 1px solid #EB769F;
+            border-radius: 5px;
+            padding: 10px;
+            width: 90%;
+        }
+
+        label {
+            padding-top: 10px !important;
+            align-items: center;
+            display: block;
+
+        }
+
+        .button {
+            border:  1px solid #EB796F;
+            background-color: white ;
+            color: #EB796F;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .card-body {
+            border-radius: 0 0 10px 10px ;
+            padding: 20px;
+        }
+
+    </style>
+
+
+  </head>
+  <body>
+
+    <div class="container">
+        {% block content%}
+         
+        {% endblock content %}
+    </div>
+     
+    
+  </body>
+
+
+
+
+
+
+
+
+</html>

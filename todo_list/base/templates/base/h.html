@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Example</title>
+</head>
+<body>
+
+<div id="checkboxContainer">
+    <!-- The checkbox will be added here using JavaScript -->
+</div>
+
+<script>
+    // Create a checkbox element
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'myCheckbox';
+
+    // Create a label for the checkbox
+    var label = document.createElement('label');
+    label.htmlFor = 'myCheckbox';
+    label.appendChild(document.createTextNode('task status'));
+
+    // Append the checkbox and label to the container
+    var container = document.getElementById('checkboxContainer');
+    container.appendChild(checkbox);
+    container.appendChild(label);
+
+    // Optional: Add event listener to detect checkbox state changes
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            alert('Task completed!');
+        } else {
+            alert('Task not completed !');
+        }
+    });
+</script>
+
+</body>
+</html>
